@@ -1,13 +1,41 @@
 {
   "name": "websocket-perfect",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "a websocket libary",
-  "main": "index.js",
+  "main": "lib",
+  "scripts": {
+    "build": "rimraf lib && babel ./index.js -d lib"
+  },
+  "keywords": [
+    "websocket",
+    "rxjs",
+    "websocket-rxjs"
+  ],
   "dependencies": {
     "lodash": "^4.17.11",
     "rxjs": "^6.3.3"
   },
   "author": "weixiaoyi",
   "email": "2278095567@qq.com",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.6",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/preset-env": "^7.1.6",
+    "rimraf": "^2.6.2"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "useBuiltIns": "entry"
+        }
+      ]
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-class-properties"
+    ]
+  }
 }
