@@ -1,6 +1,6 @@
 {
   "name": "websocket-perfect",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "main": "lib",
   "description": "a websocket libary",
   "author": "weixiaoyi",
@@ -8,7 +8,7 @@
   "repository": "https://github.com/weixiaoyi/websocket-perfect.git",
   "email": "2278095567@qq.com",
   "scripts": {
-    "build": "rimraf lib && babel ./index.js -d lib"
+    "build": "rimraf lib && babel src -d lib"
   },
   "keywords": [
     "websocket",

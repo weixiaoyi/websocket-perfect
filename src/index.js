@@ -1,14 +1,14 @@
-import { formatJson, } from './utils'
+import { formatJson, } from '../utils/index'
 import _ from 'lodash'
 import { Subject } from 'rxjs'
 
 class Ws {
-  constructor({ url, debug = true, buffer, bufferCount, beforeSend, afterSend, bufferWhen }) {
+  constructor({ url, debug = true, buffer, bufferSize, beforeSend, afterSend, bufferWhen }) {
     this._config = {
       debug,
       url,
       buffer,
-      bufferCount,
+      bufferSize,
       bufferWhen,
       beforeSend,
       afterSend,
@@ -82,15 +82,15 @@ class Ws {
   send = (message = {}) => {
     try {
       let obj = _.cloneDeep(message)
-      const { bufferCount, beforeSend } = this._config
+      const { bufferSize, beforeSend } = this._config
       if (_.isFunction(this._interceptor.before)) obj = this._interceptor.before(obj)
       if (!_.isObject(obj)) throw('send的参数或经interceptor处理后的结果必须是对象格式')
       const [clone_message, clone_obj] = [_.cloneDeep(message), _.cloneDeep(obj)]
       if (this._bufferWhen(clone_message, clone_obj)) {
         this._subscribeRecords.push(obj)
       }
-      if (this._subscribeRecords.length && bufferCount && _.isInteger(bufferCount)) {
-        this._subscribeRecords = this._subscribeRecords.slice(-bufferCount)
+      if (this._subscribeRecords.length && bufferSize && _.isInteger(bufferSize)) {
+        this._subscribeRecords = this._subscribeRecords.slice(-bufferSize)
       }
       if (_.isFunction(beforeSend)) {
         beforeSend(clone_message, clone_obj)
