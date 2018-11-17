@@ -1,0 +1,13 @@
+{
+  "name": "websocket-perfect",
+  "version": "1.0.0",
+  "description": "a websocket libary",
+  "main": "index.js",
+  "dependencies": {
+    "lodash": "^4.17.11",
+    "rxjs": "^6.3.3"
+  },
+  "author": "weixiaoyi",
+  "email": "2278095567@qq.com",
+  "license": "MIT"
+}
